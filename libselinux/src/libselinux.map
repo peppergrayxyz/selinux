@@ -255,7 +255,7 @@ LIBSELINUX_3.5 {
 
 LIBSELINUX_3.8 {
   global:
-    matchpathcon_filespec_add64;
+    matchpathcon_filespec_add;
 } LIBSELINUX_3.5;
 
 LIBSELINUX_3.9 {
