@@ -453,6 +453,9 @@ static PyMethodDef audit2whyMethods[] = {
     {NULL, NULL, 0, NULL}        /* Sentinel */
 };
 
+PyMODINIT_FUNC PyInit_audit2why(void); /* silence -Wmissing-prototypes */
+PyMODINIT_FUNC initaudit2why(void); /* silence -Wmissing-prototypes */
+
 #if PY_MAJOR_VERSION >= 3
 /* Module-initialization logic specific to Python 3 */
 static struct PyModuleDef moduledef = {
@@ -467,10 +470,8 @@ static struct PyModuleDef moduledef = {
 	NULL
 };
 
-PyMODINIT_FUNC PyInit_audit2why(void); /* silence -Wmissing-prototypes */
 PyMODINIT_FUNC PyInit_audit2why(void)
 #else
-PyMODINIT_FUNC initaudit2why(void); /* silence -Wmissing-prototypes */
 PyMODINIT_FUNC initaudit2why(void)
 #endif
 {
@@ -500,5 +501,18 @@ PyMODINIT_FUNC initaudit2why(void)
 
 #if PY_MAJOR_VERSION >= 3
 	return m;
+#endif
+}
+
+#if PY_MAJOR_VERSION >= 3
+PyMODINIT_FUNC initaudit2why(void)
+#else
+PyMODINIT_FUNC PyInit_audit2why(void)
+#endif
+{
+#if PY_MAJOR_VERSION >= 3
+	return PyInit_audit2why();
+#else
+	return initaudit2why();
 #endif
 }
